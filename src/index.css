@@ -1,0 +1,13 @@
+@import '/node_modules/modern-normalize/modern-normalize.css';
+body {
+  margin: 0;
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(218, 193, 193);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
