@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logIn, register } from "./auth-operations";
+import { logIn, register, current, logOut } from "./auth-operations";
 
 const initState = {
     user: { name: null, email: null },
@@ -8,11 +8,10 @@ const initState = {
     isLoading: false,
     isAuth: false,
 }
-console.log(initState);
 
 const authSlice = createSlice({
     name: "auth",
-    initState,
+    initialState: initState,
     extraReducers: {
         [register.pending](state, action) {
             // state.isLoading = true;
@@ -40,7 +39,7 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload,
+                error: action.payload.error,
             };
         },
         [logIn.pending](state, action) {
@@ -50,7 +49,7 @@ const authSlice = createSlice({
                 isLoading: true,
             };
         },
-        [logIn.fulfilled](state, action) {
+        [logIn.fulfilled]:(state, action) =>{
             // state.isLoading = false;
             // state.user = action.payload.user;
             // state.token = action.payload.token;
@@ -69,11 +68,68 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload,
+                error: action.payload.error,
             };
-        }
+        },
+        [current.pending](state, action) {
+            // state.isLoading = true;
+            return {
+                ...state,
+                isLoading: true,
+            };
+        },
+        [current.fulfilled](state, action) {
+            // state.isLoading = false;
+            // state.user = action.payload.user;
+            // state.token = action.payload.token;
+            // state.isAuth = true;
+            return {
+                ...state,
+                isLoading: false,
+                user: action.payload,
+                isAuth: true,
+            };
+        },
+        [current.rejected](state, action) {
+            // state.isLoading = false;
+            // state.error = action.payload;
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload.error,
+                isAuth: false,
+            };
+        },
+        [logOut.pending](state, action) {
+            // state.isLoading = true;
+            return {
+                ...state,
+                isLoading: true,
+            };
+        },
+        [logOut.fulfilled](state, action) {
+            // state.isLoading = false;
+            // state.user = action.payload.user;
+            // state.token = action.payload.token;
+            // state.isAuth = false;
+            return {
+                ...state,
+                isLoading: false,
+                user: { name: null, email: null },
+                token: null,
+                isAuth: false,
+            };
+        },
+        [logOut.rejected](state, action) {
+            // state.isLoading = false;
+            // state.error = action.payload;
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload.error,
+            };
+        },
     }
 });
-// export const { renameProp } = authSlice.action;
-console.log(authSlice.reducer)
+// console.log(authSlice.reducer)
 export default authSlice.reducer;

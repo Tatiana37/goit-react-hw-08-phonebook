@@ -3,7 +3,7 @@ const PublicRoute = ({ isAuth, component: Component }) => {
     return (
         <>
             <h1>Public</h1>
-            {isAuth ? <Navigate to="/" /> : <Component />}
+            {isAuth ? <Navigate to="/contacts" /> : <Component />}
         </>
     )
 };

@@ -6,14 +6,14 @@
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
         const dispatch = useDispatch();
-        const handleChange = (e) => {
-            switch (e.target.value) {
+        const handleChange = ({target: {name, value}}) => {
+            switch (name) {
             
                 case "email":
-                    setEmail(e.target.value);
+                    setEmail(value);
                     break;
                 case "password":
-                    setPassword(e.target.value);
+                    setPassword(value);
                     break;
                 default:
                     alert('Please, check the password!');
@@ -58,7 +58,7 @@
                         />
                     </label>
 
-                    <button type="submit">Register</button>
+                    <button type="submit">Log In</button>
                 </form>
             </div>
         )

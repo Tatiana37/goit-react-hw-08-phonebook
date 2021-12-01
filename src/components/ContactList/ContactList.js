@@ -10,7 +10,7 @@ import { getVisibleContacts } from '../../redux/Contacts/contacts-selectors';
 function ContactList() {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchContacts()), [dispatch]);
+  // useEffect(() => dispatch(fetchContacts()), [dispatch]);
   const contacts = useSelector(getVisibleContacts);
   
   return (

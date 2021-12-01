@@ -2,17 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 const AuthMenu = () => {
     return (
-        <nav>
+        <div>
             <ul>
-                <li>
-            <NavLink
-                to="/"
-                
-            >
-                Home
-                </NavLink>
-                </li>
-
                 <li>
             <NavLink
                 to="/register"
@@ -32,7 +23,7 @@ const AuthMenu = () => {
                 </li>
             </ul>
             
-        </nav>
+        </div>
     )
 }
 

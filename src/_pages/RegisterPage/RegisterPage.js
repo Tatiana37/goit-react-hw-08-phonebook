@@ -7,16 +7,16 @@ const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const handleChange = (e) => {
-        switch (e.target.value) {
+    const handleChange = ({target: {name, value}}) => {
+        switch (name) {
             case "name":
-                setName(e.target.value);
+                setName(value);
                 break;
             case "email":
-                setEmail(e.target.value);
+                setEmail(value);
                 break;
             case "password":
-                setPassword(e.target.value);
+                setPassword(value);
                 break;
             default:
                 alert('Please, check the name!');
@@ -71,7 +71,7 @@ const RegisterPage = () => {
                     />
                 </label>
 
-                <button type="submit">Submit</button>
+                <button type="submit">Register</button>
             </form>
         </div>
     )
