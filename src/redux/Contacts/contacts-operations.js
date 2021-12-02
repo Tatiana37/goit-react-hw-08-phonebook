@@ -47,7 +47,7 @@ export const fetchContacts = createAsyncThunk(
     'contacts/fetchContacts',
     async (_, { rejectWithValue, getState }) => {
         const state = getState();
-        const persistToken = state.contacts.token;
+        const persistToken = state.auth.token;
         if (persistToken === null) {
             return rejectWithValue();
         }
