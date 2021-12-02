@@ -11,21 +11,25 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './Auth/auth-slice';
-import contactsReducer from './Contacts/contacts-reducers';
-// console.log(authReducer)
-
+import contactsReducer from './Contacts/contacts-slice';
+console.log(contactsReducer)
 
 const authPersistConfig = {
     key: 'auth',
     storage,
     whitelist:['token'],
 }
-const authPersistReducer = persistReducer(authPersistConfig, authReducer);
-export const store = configureStore({
 
+const contactsPersistConfig = {
+    key: 'contacts',
+    storage,
+    whitelist:['contacts'],
+}
+
+export const store = configureStore({
     reducer: {
-        auth: authPersistReducer,
-        contacts: contactsReducer,
+        auth: persistReducer(authPersistConfig, authReducer),
+        contacts: persistReducer(contactsPersistConfig, contactsReducer),
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
@@ -38,9 +42,4 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-// if (typeof reducer === 'function') {
-//      rootReducer = reducer
-//      } else if (isPlainObject(reducer)) {
-//       rootReducer = combineReducers(reducer)
-//      } else {
-//      throw new Error()
+
