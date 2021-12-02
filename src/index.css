@@ -1,13 +1,59 @@
 @import '/node_modules/modern-normalize/modern-normalize.css';
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+a,
+ul,
+li,
+p {
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(218, 193, 193);
+  background-image: url('https://thumbs.dreamstime.com/b/phonebook-10869916.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 45px;
+}
+.welcome {
+  text-align: center;
+  font-size: 35px;
+  text-shadow: 1px 1px 2px grey;
 }

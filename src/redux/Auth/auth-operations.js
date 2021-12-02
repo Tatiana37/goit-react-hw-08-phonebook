@@ -51,7 +51,9 @@ export const current = createAsyncThunk("user/current",
     async (_, { rejectWithValue, getState }) => {
         const state = getState();
         const persistToken = state.auth.token;
-        if (persistToken === null) return;
+        if (persistToken === null) {
+            return rejectWithValue();
+        } 
         try {
             const response = await fetch(Base_Url + userCurrent, {
                 headers: {

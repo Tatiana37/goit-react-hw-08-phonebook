@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-const PublicRoute = ({ isAuth, component: Component }) => {
+const PublicRoute = ({ isAuth, component: Component, restricted = false }) => {
+    const shouldRedirect = isAuth && restricted;
     return (
         <>
-            <h1>Public</h1>
-            {isAuth ? <Navigate to="/contacts" /> : <Component />}
+            {shouldRedirect ? <Navigate to="/contacts" /> : <Component />}
         </>
     )
 };

@@ -1,6 +1,7 @@
     import { useState } from "react";
     import { useDispatch } from "react-redux";
     import { logIn } from "../../redux/Auth/auth-operations";
+import s from '../LoginPage/LoginPage.module.css';
 
     const LoginPage = () => {
         const [email, setEmail] = useState("");
@@ -31,36 +32,49 @@
         }
 
         return (
-            <div>
-                <h1>Login Page</h1>
-
-                <form
+            <>
+                <h1 className={s.title}>Please, Log In</h1>
+                <div className={s.border}>
+                    <form
+                        className={s.form}
                     onSubmit={handleSubmit}
                     autoComplete="off">
 
-                    <label >
+                        <label
+                            className={s.label}
+                            htmlFor={email}
+                        >
                         Email
-                        <input
+                            <input
+                                className={s.input}
                             type="email"
                             name="email"
                             value={email}
-                            onChange={handleChange}
+                                onChange={handleChange}
+                                required
                         />
                     </label>
 
-                    <label >
+                        <label
+                            className={s.label}
+                            htmlFor={password}
+                        >
                         Password
-                        <input
+                            <input
+                                className={s.input}
                             type="password"
                             name="password"
                             value={password}
-                            onChange={handleChange}
+                                onChange={handleChange}
+                                minLength="8"
+                                required
                         />
                     </label>
 
-                    <button type="submit">Log In</button>
+                        <button className={s.btn} type="submit">Log In</button>
                 </form>
-            </div>
+                </div>
+            </>
         )
     }
 

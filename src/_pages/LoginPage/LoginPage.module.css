@@ -1,25 +1,33 @@
+.title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
 .border {
-  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  max-width: 300px;
   height: 200px;
   border: 2px solid black;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 10px #ccc;
 }
 .form {
-  display: inline-flex;
   flex-direction: column;
   padding: 20px;
 }
 
 .label {
   font-size: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .input {
   width: 100%;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   background-color: rgb(235, 205, 205);
 }
 
@@ -30,14 +38,16 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 1), 0 0 20px -23px rgba(0, 0, 0, 0.8);
 }
 
-.button {
-  width: 200px;
+.btn {
+  width: 100%;
   border-radius: 10px;
+  padding: 10px;
+  border-color: rgb(116, 86, 86);
   background-color: rgb(194, 156, 156);
 }
 
-.button:hover,
-.button:focus {
+.btn:hover,
+.btn:focus {
   color: rgb(194, 156, 156);
   background-color: rgb(121, 86, 86);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 1), 0 0 20px -23px rgba(0, 0, 0, 0.8);

@@ -7,6 +7,7 @@ const initState = {
     error: null,
     isLoading: false,
     isAuth: false,
+    isFetchingCurrentUser: false,
 }
 
 const authSlice = createSlice({
@@ -39,7 +40,7 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload.error,
+                error: action.payload,
             };
         },
         [logIn.pending](state, action) {
@@ -68,7 +69,7 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload.error,
+                error: action.payload,
             };
         },
         [current.pending](state, action) {
@@ -76,6 +77,7 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: true,
+                isFetchingCurrentUser: true,
             };
         },
         [current.fulfilled](state, action) {
@@ -88,6 +90,7 @@ const authSlice = createSlice({
                 isLoading: false,
                 user: action.payload,
                 isAuth: true,
+                isFetchingCurrentUser: false,
             };
         },
         [current.rejected](state, action) {
@@ -96,8 +99,9 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload.error,
+                error: action.payload,
                 isAuth: false,
+                isFetchingCurrentUser: false,
             };
         },
         [logOut.pending](state, action) {
@@ -126,7 +130,7 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload.error,
+                error: action.payload,
             };
         },
     }

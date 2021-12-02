@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import s from '../AuthMenu/AuthMenu.module.css';
 const AuthMenu = () => {
     return (
-        <div>
-            <ul>
-                <li>
-            <NavLink
+        <div className={s.authBox}>
+            <ul className={s.authList}>
+                <li className={s.item}>
+                    <NavLink className={({ isActive }) =>
+                        isActive ? s.authActive : s.authLink}
                 to="/register"
                 
             >
@@ -13,8 +15,9 @@ const AuthMenu = () => {
                 </NavLink>
                 </li>
 
-                <li>
-            <NavLink
+                <li className={s.item}>
+                    <NavLink className={({ isActive }) =>
+                        isActive ? s.authActive : s.authLink}
                 to="/login"
                 
             >

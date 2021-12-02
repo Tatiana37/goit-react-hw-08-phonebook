@@ -1,0 +1,37 @@
+.box {
+  display: flex;
+  align-items: center;
+  margin-right: 150px;
+}
+
+.icon {
+  border-radius: 50%;
+  box-shadow: 0px 0px 7px 2px rgb(121, 86, 86), 0px 0px 3px 0px rgb(121, 86, 86);
+}
+
+.text {
+  color: rgb(94, 93, 93);
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  outline: none;
+  border-color: rgb(116, 86, 86);
+  border-radius: 10px;
+  background: rgb(194, 156, 156);
+  transition: 0.2s;
+}
+.btn:hover,
+.btn:focus {
+  color: rgb(194, 156, 156);
+  background-color: rgb(121, 86, 86);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 1), 0 0 20px -23px rgba(0, 0, 0, 0.8);
+}

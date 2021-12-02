@@ -1,0 +1,25 @@
+.authList {
+  max-width: 350px;
+  height: 55px;
+  display: flex;
+  padding-right: 40px;
+}
+.item:not(:last-child) {
+  margin-right: 25px;
+}
+.authLink {
+  display: inline-block;
+  font-weight: 700;
+  color: rgb(94, 93, 93);
+  font-size: 25px;
+}
+
+.authActive {
+  display: inline-block;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 28px;
+  color: rgb(121, 86, 86);
+  border: 1px solid rgb(121, 86, 86);
+  border-radius: 10px;
+}
