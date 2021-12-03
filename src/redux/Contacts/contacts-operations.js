@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// const Base_Url = 'https://connections-api.herokuapp.com';
-// const contactsFetch = "/contacts";
-
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -18,10 +15,12 @@ const token = {
 
 export const addContact = createAsyncThunk(
     'contacts/addContact',
-    async (contact, { rejectWithValue }) => {
+    async (contact, { rejectWithValue, getState }) => {
+        const state = getState();
+        const persistToken = state.auth.token;
         try {
+            token.set(persistToken);
             const { data } = await axios.post('/contacts', contact);
-            token.set(data.token);
             return data;
         } catch (error) {
             return rejectWithValue(error);
@@ -31,12 +30,13 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
     'contacts/deleteContact',
-    async (contactsId, { rejectWithValue }) => {
+    async (contactsId, { rejectWithValue, getState }) => {
+        const state = getState();
+        const persistToken = state.auth.token;
         try {
-            const data =
+            token.set(persistToken);
                 await axios.delete(`/contacts/${contactsId}`);
-            token.set(data.token);
-            return data.id;
+            return contactsId;
         } catch (error) {
             return rejectWithValue(error);
         }
@@ -45,16 +45,15 @@ export const deleteContact = createAsyncThunk(
 
 export const fetchContacts = createAsyncThunk(
     'contacts/fetchContacts',
-    async (_, { rejectWithValue, getState }) => {
+    async (_, { rejectWithValue, getState  }) => {
         const state = getState();
         const persistToken = state.auth.token;
         if (persistToken === null) {
             return rejectWithValue();
         }
         try {
+            token.set(persistToken);
             const { data } = await axios.get('/contacts');
-            token.set(data.token);
-            console.log({data})
             return data;
         } catch (error) {
             return rejectWithValue(error);

@@ -15,17 +15,12 @@ const authSlice = createSlice({
     initialState: initState,
     extraReducers: {
         [register.pending](state, action) {
-            // state.isLoading = true;
             return {
                 ...state,
                 isLoading: true,
             };
         },
         [register.fulfilled](state, action) {
-            // state.isLoading = false;
-            // state.user = action.payload.user;
-            // state.token = action.payload.token;
-            // state.isAuth = true;
             return {
                 ...state,
                 isLoading: false,
@@ -35,8 +30,6 @@ const authSlice = createSlice({
             };
         },
         [register.rejected](state, action) {
-            // state.isLoading = false;
-            // state.error = action.payload;
             return {
                 ...state,
                 isLoading: false,
@@ -44,17 +37,12 @@ const authSlice = createSlice({
             };
         },
         [logIn.pending](state, action) {
-            // state.isLoading = true;
             return {
                 ...state,
                 isLoading: true,
             };
         },
         [logIn.fulfilled]:(state, action) =>{
-            // state.isLoading = false;
-            // state.user = action.payload.user;
-            // state.token = action.payload.token;
-            // state.isAuth = true;
             return {
                 ...state,
                 isLoading: false,
@@ -64,8 +52,6 @@ const authSlice = createSlice({
             };
         },
         [logIn.rejected](state, action) {
-            // state.isLoading = false;
-            // state.error = action.payload;
             return {
                 ...state,
                 isLoading: false,
@@ -73,7 +59,6 @@ const authSlice = createSlice({
             };
         },
         [current.pending](state, action) {
-            // state.isLoading = true;
             return {
                 ...state,
                 isLoading: true,
@@ -81,10 +66,6 @@ const authSlice = createSlice({
             };
         },
         [current.fulfilled](state, action) {
-            // state.isLoading = false;
-            // state.user = action.payload.user;
-            // state.token = action.payload.token;
-            // state.isAuth = true;
             return {
                 ...state,
                 isLoading: false,
@@ -94,8 +75,6 @@ const authSlice = createSlice({
             };
         },
         [current.rejected](state, action) {
-            // state.isLoading = false;
-            // state.error = action.payload;
             return {
                 ...state,
                 isLoading: false,
@@ -105,17 +84,12 @@ const authSlice = createSlice({
             };
         },
         [logOut.pending](state, action) {
-            // state.isLoading = true;
             return {
                 ...state,
                 isLoading: true,
             };
         },
         [logOut.fulfilled](state, action) {
-            // state.isLoading = false;
-            // state.user = action.payload.user;
-            // state.token = action.payload.token;
-            // state.isAuth = false;
             return {
                 ...state,
                 isLoading: false,
@@ -125,8 +99,6 @@ const authSlice = createSlice({
             };
         },
         [logOut.rejected](state, action) {
-            // state.isLoading = false;
-            // state.error = action.payload;
             return {
                 ...state,
                 isLoading: false,
@@ -135,5 +107,4 @@ const authSlice = createSlice({
         },
     }
 });
-// console.log(authSlice.reducer)
 export default authSlice.reducer;

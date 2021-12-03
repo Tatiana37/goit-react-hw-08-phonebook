@@ -1,10 +1,7 @@
-
 import { useDispatch, useSelector } from 'react-redux';
 import s from './FilterSearch.module.css';
-import { filterContact } from '../../redux/Contacts/contact-actions';
+import { filterAction } from '../../redux/Contacts/contacts-slice';
 import { getFilter } from '../../redux/Contacts/contacts-selectors';
-
-
 
 function FilterSearch() {
   const dispatch = useDispatch();
@@ -17,12 +14,10 @@ function FilterSearch() {
         type="text"
         name="name"
         value={value}
-        onChange={(e)=>dispatch(filterContact(e.target.value))}
+        onChange={e => dispatch(filterAction(e.target.value))}
       />
     </div>
   );
 }
 
-
 export default FilterSearch;
-

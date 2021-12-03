@@ -12,7 +12,10 @@ import ContactsPage from '../../_pages/ContactsPage/ContactsPage';
 import PrivateRoute from '../../_routes/PrivateRoute';
 import PublicRoute from '../../_routes/PublicRoute';
 import { current } from '../../redux/Auth/auth-operations';
-import { getIsAuth, getIsFetchingCurrent } from '../../redux/Auth/auth-selectors';
+import {
+  getIsAuth,
+  getIsFetchingCurrent,
+} from '../../redux/Auth/auth-selectors';
 import Loader from '../Loader/Loader';
 
 function App() {
@@ -21,22 +24,41 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(current());
-  },[dispatch]);
-  
+  }, [dispatch]);
+
   return (
     <Container>
       {isFetchingCurrentUser ? (
-        <Loader/>
+        <Loader />
       ) : (
-          <>
-        <AppBar />
-        <Routes>
-          <Route path="/" element={<PublicRoute component={HomePage} />} />
-          <Route path="/contacts" element={<PrivateRoute isAuth={isAuth} component={ContactsPage} />} />
-          <Route path="/register" element={<PublicRoute isAuth={isAuth} component={RegisterPage} restricted />} />
-          <Route path="/login" element={<PublicRoute isAuth={isAuth} component={LoginPage} restricted />} />
-            </Routes>
-            </>
+        <>
+          <AppBar />
+          <Routes>
+            <Route path="/" element={<PublicRoute component={HomePage} />} />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute isAuth={isAuth} component={ContactsPage} />
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute
+                  isAuth={isAuth}
+                  component={RegisterPage}
+                  restricted
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute isAuth={isAuth} component={LoginPage} restricted />
+              }
+            />
+          </Routes>
+        </>
       )}
       <ToastContainer
         position="top-center"
@@ -49,9 +71,8 @@ function App() {
         draggable
         pauseOnHover
       />
-      </Container>
-    );
-  }
-
+    </Container>
+  );
+}
 
 export default App;

@@ -5,14 +5,14 @@ import { fetchContacts, addContact, deleteContact } from "./contacts-operations"
 
 
 
-const contactsList = createReducer([], {
+const contacts = createReducer([], {
     [fetchContacts.fulfilled]:(_, {payload})=>payload,
     [addContact.fulfilled]: (state, { payload }) => [...state, payload],
     [deleteContact.fulfilled]: (state, { payload }) =>
         state.filter(({id}) => id !== payload)
 });
 
-const contactFilter = createReducer('', {
+const filter = createReducer('', {
     [filterContact]: (_, { payload }) => payload,
 });
 
@@ -33,9 +33,10 @@ const error = createReducer(null, {
     [fetchContacts.pending]: () => null,
 });
 
+
 export default combineReducers({
-    contactsList,
-    contactFilter,
+    contacts,
+    filter,
     isLoading,
     error,
 })
