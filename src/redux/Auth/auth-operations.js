@@ -38,7 +38,7 @@ export const logIn = createAsyncThunk(
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (err) {
       rejectWithValue(err.message);
@@ -61,10 +61,8 @@ export const current = createAsyncThunk(
         },
       });
       const data = await response.json();
-      console.log('response', data);
       return data;
     } catch (err) {
-      console.log(err.message);
       rejectWithValue(err.message);
     }
   },

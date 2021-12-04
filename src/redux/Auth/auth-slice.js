@@ -18,6 +18,7 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: true,
+        error: null,
       };
     },
     [register.fulfilled](state, action) {
@@ -40,9 +41,10 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: true,
+        error: null,
       };
     },
-    [logIn.fulfilled]: (state, action) => {
+    [logIn.fulfilled](state, action) {
       return {
         ...state,
         isLoading: false,
@@ -58,11 +60,37 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    [logOut.pending](state, action) {
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    },
+    [logOut.fulfilled](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        user: { name: null, email: null },
+        token: null,
+        isAuth: false,
+        error: null,
+        isFetchingCurrentUser: false,
+      };
+    },
+    [logOut.rejected](state, action) {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    },
     [current.pending](state, action) {
       return {
         ...state,
         isLoading: true,
         isFetchingCurrentUser: true,
+        error: null,
       };
     },
     [current.fulfilled](state, action) {
@@ -81,28 +109,6 @@ const authSlice = createSlice({
         error: action.payload,
         isAuth: false,
         isFetchingCurrentUser: false,
-      };
-    },
-    [logOut.pending](state, action) {
-      return {
-        ...state,
-        isLoading: true,
-      };
-    },
-    [logOut.fulfilled](state, action) {
-      return {
-        ...state,
-        isLoading: false,
-        user: { name: null, email: null },
-        token: null,
-        isAuth: false,
-      };
-    },
-    [logOut.rejected](state, action) {
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload,
       };
     },
   },
