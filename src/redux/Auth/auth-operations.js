@@ -73,7 +73,9 @@ export const logOut = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const persistToken = state.auth.token;
-    if (persistToken === null) return;
+    if (persistToken === null) {
+      return rejectWithValue();
+    }
     try {
       await fetch(Base_Url + userLogout, {
         method: 'POST',
